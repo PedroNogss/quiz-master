@@ -1,0 +1,389 @@
+/* Seleciona todos os elementos HTML para aplicar uma base visual consistente. */
+* {
+  /* Abre as declarações que serão aplicadas globalmente a todos os elementos. */
+  margin: 0; /* Remove margens padrão do navegador para controlar o espaçamento desde o início. */
+  padding: 0; /* Remove preenchimentos padrão do navegador para evitar espaços inesperados. */
+  box-sizing: border-box; /* Inclui borda e preenchimento no cálculo da largura e da altura dos elementos. */
+}
+
+/* Seleciona o corpo da página, que contém o conteúdo principal do quiz. */
+body {
+  /* Abre as declarações visuais e de posicionamento da página inteira. */
+  font-family:
+    Arial, Helvetica, sans-serif; /* Define a fonte do texto e alternativas caso alguma não esteja disponível. */
+  background: linear-gradient(
+    135deg,
+    #2a0845,
+    #6441a5
+  ); /* Cria um fundo em degradê roxo inclinado para compor o visual do quiz. */
+  color: #ffffff; /* Define o texto padrão da página como branco para contrastar com o fundo escuro. */
+  min-height: 100vh; /* Garante que o corpo tenha pelo menos a altura total da janela do navegador. */
+  display: flex; /* Ativa o Flexbox para posicionar e alinhar o conteúdo principal. */
+  justify-content: center; /* Centraliza horizontalmente o conteúdo dentro do corpo da página. */
+  align-items: center; /* Centraliza verticalmente o conteúdo dentro do corpo da página. */
+  padding: 20px; /* Cria espaço interno para que o conteúdo não encoste nas bordas da janela. */
+}
+
+/* Seleciona a área principal que envolve as telas do Quiz Master. */
+main {
+  /* Abre as declarações de tamanho e alinhamento do conteúdo principal. */
+  width: 100%; /* Permite que a área principal use toda a largura disponível em telas pequenas. */
+  max-width: 900px; /* Limita a largura em telas grandes para manter o conteúdo legível. */
+  text-align: center; /* Centraliza os textos e conteúdos em linha dentro da área principal. */
+}
+
+/* Seleciona o título h1 que aparece dentro da tela de categorias. */
+#categories-section h1 {
+  /* Abre as declarações visuais específicas do título principal das categorias. */
+  font-size: 2.5rem; /* Aumenta o título usando como referência o tamanho de fonte raiz do navegador. */
+  margin-bottom: 10px; /* Adiciona espaço abaixo do título antes do próximo conteúdo. */
+}
+
+/* Seleciona somente o parágrafo que é filho direto da tela de categorias. */
+#categories-section > p {
+  /* Abre as declarações para o texto introdutório da seleção de categorias. */
+  margin-bottom: 30px; /* Separa o texto introdutório da grade de cartões abaixo dele. */
+  color: #d1c4e9; /* Usa um tom lilás claro para diferenciar o texto do branco principal. */
+}
+
+/* Seleciona a grade que organiza os cartões das categorias do quiz. */
+.categories-grid {
+  /* Abre as declarações do layout da grade de categorias. */
+  display: grid; /* Ativa o CSS Grid para organizar os cartões em linhas e colunas. */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(240px, 1fr)
+  ); /* Cria colunas responsivas de pelo menos 240px que se ajustam ao espaço disponível. */
+  gap: 20px; /* Define 20px de distância entre as linhas e colunas de cartões. */
+  margin-bottom: 30px; /* Cria espaço entre a grade e os botões de ação. */
+}
+
+/* Seleciona cada cartão que representa uma categoria. */
+.category-card {
+  /* Abre as declarações visuais e interativas dos cartões de categoria. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Aplica um fundo branco translúcido para destacar o cartão sobre o degradê. */
+  border: 2px solid transparent; /* Reserva uma borda transparente que poderá ganhar cor quando a categoria for selecionada. */
+  border-radius: 16px; /* Arredonda os cantos do cartão. */
+  padding: 25px 20px; /* Cria espaço interno vertical e horizontal para o conteúdo do cartão. */
+  cursor: pointer; /* Mostra o cursor de clique para indicar que o cartão pode ser selecionado. */
+  transition: all 0.2s ease; /* Anima suavemente as mudanças de estilo do cartão em 0,2 segundo. */
+}
+
+/* Seleciona o cartão sob o ponteiro do mouse para indicar que pode ser acionado. */
+.category-card:hover {
+  /* Abre as declarações aplicadas temporariamente durante o estado de passagem do mouse. */
+  transform: translateY(
+    -5px
+  ); /* Move o cartão 5px para cima ao passar o mouse sobre ele. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.18
+  ); /* Clareia o fundo translúcido do cartão durante a interação. */
+}
+
+/* Seleciona o cartão que também possui a classe selected, usada para indicar seleção. */
+.category-card.selected {
+  /* Abre as declarações visuais do estado selecionado da categoria. */
+  border-color: #00e676; /* Colore a borda de verde para sinalizar que a categoria foi selecionada. */
+  background-color: rgba(
+    0,
+    230,
+    118,
+    0.2
+  ); /* Aplica um fundo verde translúcido ao cartão selecionado. */
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.4); /* Cria um brilho verde ao redor do cartão selecionado. */
+}
+
+/* Seleciona o elemento que contém o ícone de cada categoria. */
+.category-icon {
+  /* Abre as declarações do tamanho, exibição e espaçamento dos ícones. */
+  font-size: 2.5rem; /* Aumenta o emoji ou ícone usando o tamanho de fonte raiz como referência. */
+  display: block; /* Faz o ícone ocupar sua própria linha dentro do cartão. */
+  margin-bottom: 12px; /* Separa o ícone do título da categoria. */
+}
+
+/* Seleciona os títulos h3 dentro de cada cartão de categoria. */
+.category-card h3 {
+  /* Abre as declarações tipográficas dos nomes das categorias. */
+  margin-bottom: 8px; /* Adiciona espaço entre o nome e a descrição da categoria. */
+  font-size: 1.3rem; /* Define o tamanho do nome da categoria em relação à fonte raiz. */
+}
+
+/* Seleciona as descrições em parágrafo dentro dos cartões de categoria. */
+.category-card p {
+  /* Abre as declarações tipográficas dos textos descritivos dos cartões. */
+  font-size: 0.9rem; /* Define um tamanho ligeiramente menor para a descrição. */
+  color: #e0e0e0; /* Usa um cinza claro para diferenciar a descrição do restante do texto. */
+}
+
+/* Seleciona a área que agrupa os botões de ação da tela de categorias. */
+.categories-actions {
+  /* Abre as declarações de posicionamento e espaçamento dos botões. */
+  display: flex; /* Ativa o Flexbox para alinhar os botões em uma linha quando houver espaço. */
+  justify-content: center; /* Centraliza os botões horizontalmente dentro da área de ações. */
+  gap: 15px; /* Define o espaço entre os botões. */
+  flex-wrap: wrap; /* Permite que os botões passem para outra linha em telas estreitas. */
+}
+
+/* Seleciona os botões que pertencem à área de ações das categorias. */
+.categories-actions button {
+  /* Abre as declarações visuais e interativas compartilhadas pelos botões. */
+  padding: 12px 24px; /* Define o espaço interno vertical e horizontal de cada botão. */
+  font-size: 1rem; /* Define o tamanho do texto do botão conforme a fonte raiz. */
+  font-weight: bold; /* Deixa o texto do botão em negrito para facilitar a leitura. */
+  border: none; /* Remove a borda padrão fornecida pelo navegador. */
+  border-radius: 8px; /* Arredonda os cantos do botão. */
+  cursor: pointer; /* Mostra o cursor de clique ao passar sobre o botão. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Aplica um fundo branco translúcido aos botões por padrão. */
+  color: #ffffff; /* Define o texto dos botões como branco. */
+  transition: background-color 0.2s; /* Anima a mudança de cor de fundo ao interagir com o botão. */
+}
+
+/* Seleciona os botões de ação enquanto o ponteiro do mouse está sobre eles. */
+.categories-actions button:hover {
+  /* Abre as declarações temporárias para a interação com os botões. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.35
+  ); /* Clareia o fundo do botão ao passar o mouse sobre ele. */
+}
+
+/* Seleciona especificamente o botão que inicia a configuração do quiz. */
+#btn-start-config,
+#btn-start-quiz {
+  /* Abre a declaração da cor de destaque do botão para começar o quiz. */
+  background-color: #00c853; /* Define um fundo verde para destacar a ação principal. */
+}
+
+/* Seleciona o botão de início do quiz enquanto o ponteiro do mouse está sobre ele. */
+#btn-start-config:hover,
+#btn-start-quiz:hover {
+  /* Abre a declaração visual temporária do botão principal durante a interação. */
+  background-color: #00e676; /* Clareia o verde do botão principal ao passar o mouse sobre ele. */
+}
+#categories-section h2 {
+  font-size: 1.5rem; /* Define o tamanho do subtítulo em relação à fonte raiz. */
+  margin-bottom: 8px; /* Adiciona espaço abaixo do subtítulo antes do próximo conteúdo. */
+}
+.hidden {
+  display: none; /* Oculta elementos com a classe 'hidden' para controlar a visibilidade do conteúdo. */
+}
+#settings-section h2 {
+  font-size: 2rem; /* Define o tamanho do subtítulo em relação à fonte raiz. */
+  margin-bottom: 10px; /* Adiciona espaço abaixo do subtítulo antes do próximo conteúdo. */
+}
+#settings-section > p {
+  margin-bottom: 25px; /* Cria espaço entre o texto introdutório e os elementos de configuração. */
+  color: #d1c4e9; /* Usa um tom lilás claro para diferenciar o texto do branco principal. */
+}
+.settings-summary {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Aplica um fundo branco translúcido para destacar o resumo das configurações. */
+  padding: 15px 20px; /* Cria espaço interno para que o conteúdo do resumo não encoste nas bordas. */
+  border-radius: 12px; /* Arredonda os cantos do resumo das configurações para suavizar o visual. */
+  margin-bottom: 30px; /* Cria espaço entre o resumo das configurações e os botões de ação. */
+}
+#selected-categories-text {
+  font-weight: bold; /* Deixa o texto que lista as categorias selecionadas em negrito para destacá-lo. */
+  color: #00e676; /* Aplica uma cor verde ao texto que lista as categorias selecionadas. */
+  margin-top: 8px; /* Adiciona espaço acima do texto que lista as categorias selecionadas. */
+}
+.settings-group {
+  margin-bottom: 30px; /* Cria espaço entre os grupos de configurações para separar visualmente cada seção. */
+}
+.settings-group h3 {
+  margin-bottom: 15px; /* Adiciona espaço abaixo do título antes dos elementos de configuração. */
+}
+.options-row {
+  display: flex; /* Ativa o Flexbox para alinhar os elementos de configuração em linha. */
+  gap: 15px; /* Define o espaço entre os elementos de configuração na mesma linha. */
+  flex-wrap: wrap; /* Permite que os elementos passem para outra linha em telas estreitas. */
+  justify-content: center; /* Centraliza os elementos de configuração horizontalmente dentro do grupo. */
+}
+.question-count-btn,
+.time-limit-btn {
+  padding: 12px 24px; /* Define o espaço interno vertical e horizontal dos botões de configuração. */
+  font-size: 1rem; /* Define o tamanho do texto dos botões de configuração conforme a fonte raiz. */
+  font-weight: bold; /* Deixa o texto dos botões de configuração em negrito para facilitar a leitura. */
+  color: #ffffff; /* Define o texto dos botões de configuração como branco para contraste com o fundo. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Aplica um fundo branco translúcido para os botões de configuração. */
+  border: 2px solid transparent; /* Define uma borda transparente para os botões de configuração. */
+  border-radius: 10px; /* Arredonda os cantos dos botões de configuração. */
+  cursor: pointer; /* Muda o cursor para indicar que o elemento é clicável. */
+  transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades durante a animação. */
+}
+.question-count-btn.selected,
+.time-limit-btn.selected {
+  border-color: #00e676; /* Colore a borda de verde para indicar que o botão de configuração foi selecionado. */
+  background-color: rgba(
+    0,
+    230,
+    118,
+    0.2
+  ); /* Aplica um fundo verde translúcido ao botão de configuração selecionado. */
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.4); /* Cria um brilho verde ao redor do botão de configuração selecionado. */
+}
+
+/* Seleciona o cabeçalho da tela do quiz para organizar seu conteúdo. */
+.quiz-header {
+  /* Abre as declarações de posicionamento e estilo do cabeçalho do quiz. */
+  display: flex; /* Ativa o Flexbox para alinhar os elementos do cabeçalho em uma linha. */
+  justify-content: space-between; /* Posiciona os elementos nas extremidades opostas do cabeçalho. */
+  align-items: center; /* Alinha verticalmente os elementos ao centro do cabeçalho. */
+  margin-bottom: 15px; /* Cria espaço abaixo do cabeçalho antes da barra de progresso. */
+  font-size: 1.1rem; /* Define um tamanho de texto ligeiramente maior no cabeçalho. */
+  font-weight: bold; /* Deixa as informações do cabeçalho em negrito para destacá-las. */
+}
+
+/* Seleciona o texto que mostra o tempo restante da pergunta. */
+#timer-display {
+  /* Abre as declarações visuais do indicador de tempo. */
+  background-color: rgba(255, 255, 255, 0.15); /* Aplica um fundo branco translúcido ao contador. */
+  padding: 6px 14px; /* Define o espaço interno vertical e horizontal do contador. */
+  border-radius: 20px; /* Deixa o contorno do contador com formato arredondado. */
+  color: #00e676; /* Usa verde para destacar o tempo disponível ao jogador. */
+}
+
+/* Seleciona o recipiente externo da barra de progresso do quiz. */
+.progress-container {
+  /* Abre as declarações do contorno e tamanho da barra de progresso. */
+  width: 100%; /* Faz o recipiente ocupar toda a largura disponível. */
+  height: 10px; /* Define uma altura fixa para a barra de progresso. */
+  background-color: rgba(255, 255, 255, 0.15); /* Aplica um fundo branco translúcido ao trilho vazio. */
+  border-radius: 10px; /* Arredonda os cantos do recipiente da barra. */
+  overflow: hidden; /* Impede que o preenchimento ultrapasse os limites arredondados. */
+  margin-bottom: 25px; /* Cria espaço abaixo da barra antes da pergunta. */
+}
+
+/* Seleciona o preenchimento interno que representa o progresso atual. */
+#progress-bar {
+  /* Abre as declarações do preenchimento da barra de progresso. */
+  height: 100%; /* Faz o preenchimento ocupar toda a altura da barra. */
+  width: 0%; /* Define 0% como estado inicial do progresso antes de o JavaScript atualizá-lo. */
+  background-color: #00e676; /* Usa verde para indicar o progresso concluído. */
+  transition: width 0.3s ease; /* Anima suavemente a mudança de largura da barra em 0,3 segundo. */
+}
+
+/* Seleciona o cartão que contém o texto da pergunta atual. */
+.question-box {
+  /* Abre as declarações visuais do cartão da pergunta. */
+  background-color: rgba(255, 255, 255, 0.1); /* Aplica um fundo branco translúcido ao cartão. */
+  border-radius: 16px; /* Arredonda os cantos do cartão da pergunta. */
+  padding: 30px 25px; /* Cria espaço interno ao redor do conteúdo da pergunta. */
+  margin-bottom: 25px; /* Separa o cartão da pergunta das opções de resposta. */
+}
+
+/* Seleciona o rótulo que identifica a categoria da pergunta. */
+#question-category {
+  /* Abre as declarações tipográficas do rótulo da categoria. */
+  display: inline-block; /* Faz o rótulo ocupar apenas a largura necessária sem quebrar o fluxo. */
+  font-size: 0.85rem; /* Define um tamanho menor para o rótulo da categoria. */
+  text-transform: uppercase; /* Converte o texto da categoria para letras maiúsculas. */
+  letter-spacing: 1.5px; /* Aumenta o espaçamento entre as letras do rótulo. */
+  color: #00e676; /* Usa verde para destacar a categoria da pergunta. */
+  margin-bottom: 12px; /* Separa o rótulo do texto principal da pergunta. */
+  font-weight: bold; /* Deixa o rótulo da categoria em negrito. */
+}
+
+/* Seleciona o texto principal da pergunta exibida no quiz. */
+#question-text {
+  /* Abre as declarações tipográficas da pergunta. */
+  font-size: 1.5rem; /* Aumenta o texto para facilitar a leitura da pergunta. */
+  line-height: 1.4; /* Ajusta a altura das linhas para melhorar o espaçamento vertical do texto. */
+}
+
+/* Seleciona a grade responsável pelas opções de resposta. */
+.options-grid {
+  /* Abre as declarações do layout das alternativas. */
+  display: grid; /* Ativa o CSS Grid para organizar as opções de resposta. */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cria colunas responsivas com largura mínima de 280px. */
+  gap: 15px; /* Define o espaço entre as opções de resposta. */
+  margin-bottom: 25px; /* Separa as opções do botão para avançar no quiz. */
+}
+
+/* Seleciona cada botão usado como alternativa de resposta. */
+.option-btn {
+  /* Abre as declarações visuais e interativas das alternativas. */
+  padding: 18px 20px; /* Define o espaço interno da opção para ampliar sua área clicável. */
+  font-size: 1rem; /* Define o tamanho padrão do texto da alternativa. */
+  color: #ffffff; /* Deixa o texto da alternativa branco para contraste. */
+  background-color: rgba(255, 255, 255, 0.08); /* Aplica um fundo branco translúcido à alternativa. */
+  border: 2px solid rgba(255, 255, 255, 0.2); /* Define uma borda clara e suave ao redor da opção. */
+  border-radius: 12px; /* Arredonda os cantos do botão de alternativa. */
+  cursor: pointer; /* Mostra o cursor de clique para indicar que a opção pode ser selecionada. */
+  text-align: left; /* Alinha o texto da alternativa à esquerda. */
+  transition: all 0.2s ease; /* Anima suavemente as mudanças visuais da opção em 0,2 segundo. */
+}
+
+/* Seleciona uma alternativa não desativada enquanto o ponteiro está sobre ela. */
+.option-btn:hover:not(:disabled) {
+  /* Abre as declarações temporárias da interação com uma opção disponível. */
+  background-color: rgba(255, 255, 255, 0.18); /* Clareia o fundo da opção ao passar o mouse sobre ela. */
+  border-color: #ffffff; /* Deixa a borda totalmente branca durante a interação. */
+}
+
+/* Seleciona uma alternativa marcada como resposta correta. */
+.option-btn.correct {
+  /* Abre as declarações visuais do estado correto da alternativa. */
+  background-color: rgba(0, 230, 118, 0.25); /* Aplica um fundo verde translúcido à resposta correta. */
+  border-color: #00e676; /* Colore a borda de verde para indicar acerto. */
+  color: #ffffff; /* Mantém o texto branco na opção correta. */
+  font-weight: bold; /* Deixa o texto da alternativa correta em negrito. */
+}
+
+/* Seleciona uma alternativa marcada como resposta incorreta. */
+.option-btn.wrong {
+  /* Abre as declarações visuais do estado incorreto da alternativa. */
+  background-color: rgba(255, 82, 82, 0.25); /* Aplica um fundo vermelho translúcido à resposta incorreta. */
+  border-color: #ff5252; /* Colore a borda de vermelho para indicar erro. */
+  color: #ffffff; /* Mantém o texto branco na opção incorreta. */
+}
+
+/* Seleciona opções desativadas depois que uma resposta já foi registrada. */
+.option-btn:disabled {
+  /* Abre a declaração do estado desabilitado da alternativa. */
+  cursor: default; /* Remove o cursor de clique enquanto o botão estiver desativado. */
+}
+
+/* Seleciona o botão usado para avançar à próxima pergunta ou etapa. */
+#btn-next-question {
+  /* Abre as declarações visuais e interativas do botão de avanço. */
+  padding: 14px 32px; /* Define o espaço interno vertical e horizontal do botão. */
+  font-size: 1rem; /* Define o tamanho padrão do texto do botão. */
+  font-weight: bold; /* Deixa o texto do botão em negrito. */
+  color: #ffffff; /* Mantém o texto do botão branco para contraste. */
+  background-color: #00c853; /* Aplica um fundo verde à ação de avançar. */
+  border: none; /* Remove a borda padrão fornecida pelo navegador. */
+  border-radius: 8px; /* Arredonda os cantos do botão de avanço. */
+  cursor: pointer; /* Mostra o cursor de clique ao passar sobre o botão. */
+  transition: background-color 0.2s; /* Anima suavemente a mudança de fundo em 0,2 segundo. */
+}
+
+/* Seleciona o botão de avanço enquanto o ponteiro está sobre ele. */
+#btn-next-question:hover {
+  /* Abre a declaração temporária de interação do botão de avanço. */
+  background-color: #00e676; /* Clareia o fundo verde ao passar o mouse sobre o botão. */
+}

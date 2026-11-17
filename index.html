@@ -1,0 +1,260 @@
+<!doctype html>
+<!-- Informa ao navegador que este documento utiliza HTML5. -->
+<html lang="pt-br">
+  <!-- Define o idioma principal da página como português do Brasil. -->
+  <head>
+    <!-- Agrupa metadados e recursos usados pelo navegador, sem exibi-los como conteúdo da página. -->
+    <meta charset="UTF-8" />
+    <!-- Permite a exibição correta de acentos e caracteres especiais, como cedilha. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ajusta a página à largura da tela para melhorar a exibição em celulares e outros dispositivos. -->
+    <title>Quiz Master</title>
+    <!-- Define o título exibido na aba do navegador. -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Conecta esta página à folha de estilos que controla sua aparência. -->
+  </head>
+  <!-- Encerra a área de metadados e recursos da página. -->
+  <body>
+    <!-- Inicia o conteúdo visível da página. -->
+    <main>
+      <!-- Identifica o conteúdo principal do site para navegadores e tecnologias assistivas. -->
+      <section id="categories-section">
+        <!-- Cria a tela de categorias; o id permite identificá-la no CSS e no JavaScript. -->
+        <h1>Quiz Master</h1>
+        <!-- Exibe o título principal da página. -->
+        <h2>Categorias</h2>
+        <!-- Exibe o subtítulo que apresenta a seleção de categorias. -->
+        <p>Selecione uma ou mais categorias para iniciar seu Desafio!</p>
+        <!-- Orienta o usuário sobre como começar. -->
+        <div class="categories-grid">
+          <!-- Agrupa os cartões para que o CSS os organize em uma grade responsiva. -->
+          <div class="category-card" data-category="Geografia">
+            <!-- Cria o cartão de Geografia; data-category identifica a categoria para o JavaScript. -->
+            <span class="category-icon">🌍</span>
+            <!-- Exibe o ícone de Geografia; a classe permite estilizar sua aparência. -->
+            <h3>Geografia</h3>
+            <!-- Exibe o nome da categoria no cartão. -->
+            <p>Países, capitais e mapas</p>
+            <!-- Apresenta uma breve descrição do conteúdo da categoria. -->
+          </div>
+          <!-- Encerra o cartão de Geografia. -->
+          <div class="category-card" data-category="História">
+            <!-- Cria o cartão de História e informa sua categoria ao JavaScript. -->
+            <span class="category-icon">🏛️</span>
+            <!-- Exibe o ícone de História. -->
+            <h3>História</h3>
+            <!-- Exibe o nome da categoria no cartão. -->
+            <p>Eventos e personagens históricos</p>
+            <!-- Apresenta uma breve descrição do conteúdo da categoria. -->
+          </div>
+          <!-- Encerra o cartão de História. -->
+          <div class="category-card" data-category="Ciências">
+            <!-- Cria o cartão de Ciências e informa sua categoria ao JavaScript. -->
+            <span class="category-icon">🔬</span>
+            <!-- Exibe o ícone de Ciências. -->
+            <h3>Ciências</h3>
+            <!-- Exibe o nome da categoria no cartão. -->
+            <p>Biologia, química e física</p>
+            <!-- Apresenta uma breve descrição do conteúdo da categoria. -->
+          </div>
+          <!-- Encerra o cartão de Ciências. -->
+          <div class="category-card" data-category="Tecnologia">
+            <!-- Cria o cartão de Tecnologia e informa sua categoria ao JavaScript. -->
+            <span class="category-icon">💻</span>
+            <!-- Exibe o ícone de Tecnologia. -->
+            <h3>Tecnologia</h3>
+            <!-- Exibe o nome da categoria no cartão. -->
+            <p>Programação, hardware e software</p>
+            <!-- Apresenta uma breve descrição do conteúdo da categoria. -->
+          </div>
+          <!-- Encerra o cartão de Tecnologia. -->
+          <div class="category-card" data-category="Esportes">
+            <!-- Cria o cartão de Esportes e informa sua categoria ao JavaScript. -->
+            <span class="category-icon">⚽</span>
+            <!-- Exibe o ícone de Esportes. -->
+            <h3>Esportes</h3>
+            <!-- Exibe o nome da categoria no cartão. -->
+            <p>Jogadores, times e competições</p>
+            <!-- Apresenta uma breve descrição do conteúdo da categoria. -->
+          </div>
+          <!-- Encerra o cartão de Esportes. -->
+          <div class="category-card" data-category="Entretenimento">
+            <!-- Cria o cartão de Entretenimento e informa sua categoria ao JavaScript. -->
+            <span class="category-icon">🎬</span>
+            <!-- Exibe o ícone de Entretenimento. -->
+            <h3>Entretenimento</h3>
+            <!-- Exibe o nome da categoria no cartão. -->
+            <p>Filmes, séries e celebridades</p>
+            <!-- Apresenta uma breve descrição do conteúdo da categoria. -->
+          </div>
+          <!-- Encerra o cartão de Entretenimento. -->
+        </div>
+        <!-- Encerra a grade que reúne todos os cartões de categoria. -->
+        <div class="categories-actions">
+          <!-- Agrupa os botões de ação, que são posicionados e estilizados pelo CSS. -->
+          <button type="button" id="btn-select-all">Selecionar Todas</button>
+          <!-- Cria o botão para selecionar todas as categorias; o id permite encontrá-lo no JavaScript. -->
+          <button type="button" id="btn-clear">Limpar Seleção</button>
+          <!-- Cria o botão para limpar a seleção; type="button" evita o envio acidental de formulário. -->
+          <button type="button" id="btn-start-config">Começar Quiz</button>
+          <!-- Cria o botão para iniciar o quiz; o id permite identificá-lo no CSS e no JavaScript. -->
+        </div>
+        <!-- Encerra o grupo de botões de ação. -->
+      </section>
+      <!-- Encerra a tela de seleção de categorias. -->
+      <section id="settings-section" class="hidden">
+        <!-- Reserva a seção de configurações, identificada pelo id para uso no CSS e no JavaScript. -->
+        <!-- A classe hidden mantém esta seção oculta até que o usuário avance pela interface. -->
+        <h2>Configurar Partida</h2>
+        <!-- Exibe o título da tela de personalização da partida. -->
+        <p>Personalize as regras do seu desafio</p>
+        <!-- Orienta o usuário sobre as opções de configuração disponíveis. -->
+        <div class="settings-summary">
+          <!-- Agrupa o resumo das escolhas feitas pelo usuário. -->
+          <h3>Categorias escolhidas:</h3>
+          <!-- Identifica o resumo que apresenta as categorias selecionadas. -->
+          <p id="selected-categories-text"></p>
+          <!-- Exibe dinamicamente os nomes das categorias escolhidas por meio do JavaScript. -->
+        </div>
+        <!-- Encerra o bloco que resume as categorias selecionadas. -->
+        <div class="settings-group">
+          <!-- Agrupa as opções relacionadas à quantidade de perguntas. -->
+          <h3>Quantidade de perguntas</h3>
+          <!-- Exibe o título do grupo de configuração da quantidade de perguntas. -->
+          <div class="options-row">
+            <!-- Organiza horizontalmente os botões de quantidade em uma linha responsiva. -->
+            <button
+              type="button"
+              class="question-count-btn selected"
+              data-questions="5"
+            >
+              <!-- Define o botão como não submissivo e vincula o valor de cinco perguntas ao JavaScript. -->
+              5 Perguntas
+              <!-- Exibe o texto da opção que seleciona cinco perguntas. -->
+            </button>
+            <!-- Encerra o botão da opção de cinco perguntas. -->
+            <button
+              type="button"
+              class="question-count-btn"
+              data-questions="10"
+            >
+              <!-- Define o botão como não submissivo e vincula o valor de dez perguntas ao JavaScript. -->
+              10 Perguntas
+              <!-- Exibe o texto da opção que seleciona dez perguntas. -->
+            </button>
+            <!-- Encerra o botão da opção de dez perguntas. -->
+            <button
+              type="button"
+              class="question-count-btn"
+              data-questions="15"
+            >
+              <!-- Define o botão como não submissivo e vincula o valor de quinze perguntas ao JavaScript. -->
+              15 Perguntas
+              <!-- Exibe o texto da opção que seleciona quinze perguntas. -->
+            </button>
+            <!-- Encerra o botão da opção de quinze perguntas. -->
+          </div>
+          <!-- Encerra a linha que reúne os botões de quantidade de perguntas. -->
+        </div>
+        <!-- Encerra o grupo de configuração da quantidade de perguntas. -->
+        <div class="settings-group">
+          <!-- Agrupa as opções relacionadas ao tempo disponível por pergunta. -->
+          <h3>Tempo por pergunta</h3>
+          <!-- Exibe o título do grupo de configuração do tempo por pergunta. -->
+          <div class="options-row">
+            <!-- Organiza horizontalmente os botões de tempo em uma linha responsiva. -->
+            <button
+              type="button"
+              class="time-limit-btn selected"
+              data-time="15"
+            >
+              <!-- Define o botão como não submissivo e vincula o limite padrão de quinze segundos ao JavaScript. -->
+              15 segundos
+              <!-- Exibe o texto da opção que define quinze segundos por pergunta. -->
+            </button>
+            <!-- Encerra o botão da opção de quinze segundos. -->
+            <button type="button" class="time-limit-btn" data-time="30">
+              <!-- Define o botão como não submissivo e vincula o limite de trinta segundos ao JavaScript. -->
+              30 segundos
+              <!-- Exibe o texto da opção que define trinta segundos por pergunta. -->
+            </button>
+            <!-- Encerra o botão da opção de trinta segundos. -->
+            <button type="button" class="time-limit-btn" data-time="60">
+              <!-- Define o botão como não submissivo e vincula o limite de sessenta segundos ao JavaScript. -->
+              60 segundos
+              <!-- Exibe o texto da opção que define sessenta segundos por pergunta. -->
+            </button>
+            <!-- Encerra o botão da opção de sessenta segundos. -->
+          </div>
+          <!-- Encerra a linha que reúne os botões de tempo por pergunta. -->
+        </div>
+        <!-- Encerra o grupo de configuração do tempo por pergunta. -->
+        <div class="categories-actions">
+          <!-- Agrupa os botões usados para retornar ou iniciar a partida. -->
+          <button type="button" id="btn-back-categories">Voltar</button>
+          <!-- Cria o botão que permite voltar à seleção de categorias sem enviar um formulário. -->
+          <button type="button" id="btn-start-quiz">Iniciar Partida</button>
+          <!-- Cria o botão identificado pelo JavaScript para iniciar o quiz com as configurações escolhidas. -->
+        </div>
+        <!-- Encerra o grupo dos botões de navegação da tela de configurações. -->
+      </section>
+      <!-- Encerra a tela de personalização da partida. -->
+      <section id="quiz-section" class="hidden">
+        <!-- Reserva a seção visível durante o quiz e a mantém oculta até o início da partida. -->
+        <!-- 1. Cabeçalho com contador, pontos e cronômetro -->
+        <div class="quiz-header">
+          <!-- Organiza as informações gerais exibidas durante cada pergunta. -->
+          <span id="question-counter">Pergunta 1 de 5</span>
+          <!-- Exibe o número atual da pergunta e o total configurado. -->
+          <span id="score-display">Pontos: 0</span>
+          <!-- Exibe a pontuação atual do usuário. -->
+          <span id="timer-display">⏱️ 15s</span>
+          <!-- Exibe o tempo restante da pergunta e é atualizado pelo JavaScript. -->
+        </div>
+        <!-- Encerra o cabeçalho do quiz. -->
+
+        <!-- 2. Trilho e preenchimento da barra de progresso -->
+        <div class="progress-container">
+          <!-- Exibe o fundo que delimita a barra de progresso. -->
+          <div id="progress-bar"></div>
+          <!-- Representa a parte preenchida da barra de progresso. -->
+        </div>
+        <!-- Encerra o recipiente da barra de progresso. -->
+
+        <!-- 3. Caixa exclusiva do enunciado da pergunta -->
+        <div class="question-box">
+          <!-- Agrupa visualmente a categoria e o texto da pergunta atual. -->
+          <span id="question-category">Categoria</span>
+          <!-- Exibe a categoria da pergunta atual. -->
+          <h2 id="question-text">Texto da pergunta aparecerá aqui</h2>
+          <!-- Exibe o enunciado da pergunta atual por meio do JavaScript. -->
+        </div>
+        <!-- Encerra o cartão que contém o enunciado da pergunta. -->
+
+        <!-- 4. Grade onde o JavaScript vai criar os 4 botões de alternativa -->
+        <div id="options-container" class="options-grid"></div>
+        <!-- Reserva a grade preenchida dinamicamente pelas alternativas da pergunta atual. -->
+
+        <!-- 5. Botão para ir para a próxima pergunta -->
+        <button type="button" id="btn-next-question" class="hidden">
+          <!-- Define um botão não submissivo, inicialmente oculto, para avançar no quiz. -->
+          Próxima Pergunta
+          <!-- Exibe o texto do botão de avanço. -->
+        </button>
+        <!-- Encerra o botão que avança para a próxima pergunta. -->
+      </section>
+      <!-- Reserva a seção onde as perguntas do quiz serão exibidas. -->
+      <section id="results-section" class="hidden"></section>
+      <!-- Reserva a seção onde os resultados do quiz serão exibidos. -->
+    </main>
+    <!-- Encerra o conteúdo principal da página. -->
+    <script src="js/questions.js"></script>
+    <!-- Carrega os dados das perguntas antes dos scripts que podem utilizá-los. -->
+    <script src="js/quiz.js"></script>
+    <!-- Carrega a lógica responsável pelo funcionamento do quiz. -->
+    <script src="js/app.js"></script>
+    <!-- Carrega a lógica principal da aplicação e as interações da página. -->
+  </body>
+  <!-- Encerra o conteúdo visível da página. -->
+</html>
+<!-- Encerra o documento HTML. -->
