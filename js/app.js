@@ -232,6 +232,7 @@ function goToNextQuestion() {
   } else {
     // Executa quando todas as perguntas já foram respondidas.
     totalQuizTime = Math.round((Date.now() - quizStartTime) / 1000); // Calcula a duração total em segundos arredondados.
+    renderResults();
     quizSection.classList.add("hidden"); // Oculta a tela da partida concluída.
     resultsSection.classList.remove("hidden"); // Exibe a seção de resultados da partida.
   } // Encerra a decisão entre continuar e concluir o quiz.
@@ -242,3 +243,91 @@ btnNextQuestion.addEventListener("click", () => {
   // Configura o evento de clique.
   goToNextQuestion(); // Executa a função que avança para a próxima pergunta.
 }); // Encerra o registro do evento do botão.
+const finalScoreEl = document.getElementById("final-score");
+const correctCountEl = document.getElementById("correct-count");
+const wrongCountEl = document.getElementById("wrong-count");
+const unansweredCountEl = document.getElementById("unanswered-count");
+const accuracyPercentEl = document.getElementById("accuracy-percent");
+const totalTimeEl = document.getElementById("total-time");
+const categoryStatsList = document.getElementById("category-stats-list");
+const reviewContainer = document.getElementById("review-container");
+const reviewList = document.getElementById("review-list");
+const btnPlayAgain = document.getElementById("btn-play-again");
+const btnReviewAnswers = document.getElementById("btn-review-answers");
+const btnBackToCategories = document.getElementById("btn-back-to-categories");
+function renderResults() {
+  const totalQuestions = quizQuestions.length;
+  const accuracy = Math.round((score / totalQuestions) * 100);
+
+  // 1. Preenche os 6 cartões de estatísticas com os valores reais
+  finalScoreEl.textContent = score;
+  correctCountEl.textContent = score;
+  wrongCountEl.textContent = wrongCount;
+  unansweredCountEl.textContent = unansweredCount;
+  accuracyPercentEl.textContent = `${accuracy}%`;
+  totalTimeEl.textContent = `${totalQuizTime}s`;
+
+  // 2. Garante que a caixa de revisão comece escondida
+  reviewContainer.classList.add("hidden");
+
+  // 3. Agrupa os acertos e totais por categoria usando um Objeto
+  const categoryStats = {};
+  userAnswers.forEach((answer) => {
+    if (!categoryStats[answer.category]) {
+      categoryStats[answer.category] = { correct: 0, total: 0 };
+    }
+    categoryStats[answer.category].total++;
+    if (answer.isCorrect) {
+      categoryStats[answer.category].correct++;
+    }
+  });
+
+  // 4. Desenha na tela cada linha de categoria calculada acima
+  categoryStatsList.innerHTML = "";
+  Object.keys(categoryStats).forEach((categoryName) => {
+    const stat = categoryStats[categoryName];
+    const percent = Math.round((stat.correct / stat.total) * 100);
+
+    const item = document.createElement("div");
+    item.classList.add("category-stat-item");
+    item.innerHTML = `
+      <span>${categoryName}</span>
+      <strong>${stat.correct}/${stat.total} (${percent}%)</strong>
+    `;
+    categoryStatsList.appendChild(item);
+  });
+
+  // 5. Monta os cartões de revisão das respostas (usando userAnswers)
+  reviewList.innerHTML = "";
+  userAnswers.forEach((answer, index) => {
+    const item = document.createElement("div");
+    item.classList.add("review-item", answer.isCorrect ? "correct" : "wrong");
+
+    const userChoiceText = answer.selected
+      ? answer.selected
+      : "Não respondida (tempo esgotado)";
+
+    item.innerHTML = `
+      <p><strong>${index + 1}. [${answer.category}] ${answer.question}</strong></p>
+      <p>Sua resposta: ${userChoiceText}</p>
+      <p>Resposta correta: <strong>${answer.correctAnswer}</strong></p>
+      <p class="review-explanation">Explicação: ${answer.explanation}</p>
+    `;
+    reviewList.appendChild(item);
+  });
+}
+btnReviewAnswers.addEventListener("click", () => {
+  reviewContainer.classList.toggle("hidden");
+});
+
+btnPlayAgain.addEventListener("click", () => {
+  resultsSection.classList.add("hidden");
+  quizSection.classList.remove("hidden");
+  startQuizEngine(selectedCategories, selectedQuestionCount);
+  renderQuestion();
+});
+
+btnBackToCategories.addEventListener("click", () => {
+  resultsSection.classList.add("hidden");
+  categoriesSection.classList.remove("hidden");
+});

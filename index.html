@@ -244,7 +244,55 @@
         <!-- Encerra o botão que avança para a próxima pergunta. -->
       </section>
       <!-- Reserva a seção onde as perguntas do quiz serão exibidas. -->
-      <section id="results-section" class="hidden"></section>
+      <section id="results-section" class="hidden">
+        <h2>Resultado Final</h2>
+        <p>Confira o seu desempenho nesta partida!</p>
+        <div class="results-grid">
+          <div class="stat-card">
+            <span>Pontuação Final</span>
+            <strong id="final-score">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Respostas Corretas</span>
+            <strong id="correct-count">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Respostas Incorretas</span>
+            <strong id="wrong-count">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Respostas Não Respondidas</span>
+            <strong id="unanswered-count">0</strong>
+          </div>
+          <div class="stat-card">
+            <span>Percentual de Acerto</span>
+            <strong id="accuracy-percent">0%</strong>
+          </div>
+          <div class="stat-card">
+            <span>Tempo Total</span>
+            <strong id="total-time">0s</strong>
+          </div>
+        </div>
+        <!-- 3. Caixa de desempenho separado por categoria -->
+        <div class="category-performance-box">
+          <h3>Desempenho por Categoria</h3>
+          <div id="category-stats-list"></div>
+        </div>
+        <!-- 4. Os 3 botões obrigatórios da Tela 4 -->
+        <div class="categories-actions">
+          <button type="button" id="btn-play-again">Jogar Novamente</button>
+          <button type="button" id="btn-review-answers">
+            Revisar Respostas
+          </button>
+          <button type="button" id="btn-back-to-categories">
+            Mudar Categorias
+          </button>
+        </div>
+        <div id="review-container" class="hidden">
+          <h3>Revisão das Respostas</h3>
+          <div id="review-list"></div>
+        </div>
+      </section>
       <!-- Reserva a seção onde os resultados do quiz serão exibidos. -->
     </main>
     <!-- Encerra o conteúdo principal da página. -->
