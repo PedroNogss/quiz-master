@@ -245,53 +245,99 @@
       </section>
       <!-- Reserva a seção onde as perguntas do quiz serão exibidas. -->
       <section id="results-section" class="hidden">
+        <!-- Identifica a tela de resultados e a mantém oculta até o término do quiz. -->
         <h2>Resultado Final</h2>
+        <!-- Exibe o título principal da tela de resultado da partida. -->
         <p>Confira o seu desempenho nesta partida!</p>
+        <!-- Apresenta uma orientação ao usuário sobre o resumo de desempenho. -->
         <div class="results-grid">
+          <!-- Organiza os principais dados da partida em cartões informativos. -->
           <div class="stat-card">
+            <!-- Agrupa uma estatística individual do resultado final. -->
             <span>Pontuação Final</span>
+            <!-- Identifica o valor da pontuação obtida pelo usuário. -->
             <strong id="final-score">0</strong>
+            <!-- Exibe dinamicamente a pontuação final calculada pelo JavaScript. -->
           </div>
+          <!-- Encerra o cartão da pontuação final. -->
           <div class="stat-card">
+            <!-- Agrupa a estatística de respostas corretas. -->
             <span>Respostas Corretas</span>
+            <!-- Identifica o total de perguntas respondidas corretamente. -->
             <strong id="correct-count">0</strong>
+            <!-- Exibe dinamicamente a quantidade de acertos. -->
           </div>
+          <!-- Encerra o cartão das respostas corretas. -->
           <div class="stat-card">
+            <!-- Agrupa a estatística de respostas incorretas. -->
             <span>Respostas Incorretas</span>
+            <!-- Identifica o total de perguntas respondidas incorretamente. -->
             <strong id="wrong-count">0</strong>
+            <!-- Exibe dinamicamente a quantidade de erros. -->
           </div>
+          <!-- Encerra o cartão das respostas incorretas. -->
           <div class="stat-card">
+            <!-- Agrupa a estatística de perguntas sem resposta. -->
             <span>Respostas Não Respondidas</span>
+            <!-- Identifica o total de perguntas que o tempo expirou ou não foram respondidas. -->
             <strong id="unanswered-count">0</strong>
+            <!-- Exibe dinamicamente a quantidade de respostas não enviadas. -->
           </div>
+          <!-- Encerra o cartão das respostas não respondidas. -->
           <div class="stat-card">
+            <!-- Agrupa a estatística de aproveitamento da partida. -->
             <span>Percentual de Acerto</span>
+            <!-- Identifica o valor percentual de acertos. -->
             <strong id="accuracy-percent">0%</strong>
+            <!-- Exibe dinamicamente a porcentagem de acertos calculada pelo JavaScript. -->
           </div>
+          <!-- Encerra o cartão do percentual de acerto. -->
           <div class="stat-card">
+            <!-- Agrupa a estatística do tempo total gasto no quiz. -->
             <span>Tempo Total</span>
+            <!-- Identifica o tempo acumulado usado pelo usuário. -->
             <strong id="total-time">0s</strong>
+            <!-- Exibe dinamicamente o tempo total da partida em segundos. -->
           </div>
+          <!-- Encerra o cartão do tempo total. -->
         </div>
+        <!-- Encerra a grade que reúne as estatísticas gerais da partida. -->
         <!-- 3. Caixa de desempenho separado por categoria -->
         <div class="category-performance-box">
+          <!-- Agrupa o resumo detalhado do desempenho em cada categoria. -->
           <h3>Desempenho por Categoria</h3>
+          <!-- Exibe o título do bloco de estatísticas por categoria. -->
           <div id="category-stats-list"></div>
+          <!-- Reserva a área preenchida pelo JavaScript com o desempenho de cada categoria. -->
         </div>
+        <!-- Encerra o bloco de desempenho separado por categoria. -->
         <!-- 4. Os 3 botões obrigatórios da Tela 4 -->
         <div class="categories-actions">
+          <!-- Agrupa os botões de ação disponíveis após a conclusão da partida. -->
           <button type="button" id="btn-play-again">Jogar Novamente</button>
+          <!-- Permite iniciar outra partida sem enviar dados por formulário. -->
           <button type="button" id="btn-review-answers">
+            <!-- Define o botão responsável por abrir ou atualizar a revisão das respostas. -->
             Revisar Respostas
+            <!-- Exibe o texto do botão de revisão das respostas. -->
           </button>
+          <!-- Encerra o botão de revisão das respostas. -->
           <button type="button" id="btn-back-to-categories">
+            <!-- Define o botão que permite retornar à tela de categorias sem enviar um formulário. -->
             Mudar Categorias
+            <!-- Exibe o texto do botão de mudança de categorias. -->
           </button>
+          <!-- Encerra o botão de mudança de categorias. -->
         </div>
+        <!-- Encerra o grupo de ações da tela de resultados. -->
         <div id="review-container" class="hidden">
+          <!-- Reserva a área de revisão e a mantém oculta até que o usuário solicite a revisão. -->
           <h3>Revisão das Respostas</h3>
+          <!-- Exibe o título da área que detalha as respostas da partida. -->
           <div id="review-list"></div>
+          <!-- Reserva a lista preenchida dinamicamente com cada pergunta e sua resposta correspondente. -->
         </div>
+        <!-- Encerra o contêiner da revisão das respostas. -->
       </section>
       <!-- Reserva a seção onde os resultados do quiz serão exibidos. -->
     </main>

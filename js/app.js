@@ -232,7 +232,7 @@ function goToNextQuestion() {
   } else {
     // Executa quando todas as perguntas já foram respondidas.
     totalQuizTime = Math.round((Date.now() - quizStartTime) / 1000); // Calcula a duração total em segundos arredondados.
-    renderResults();
+    renderResults(); // Calcula e monta o conteúdo exibido na tela de resultados.
     quizSection.classList.add("hidden"); // Oculta a tela da partida concluída.
     resultsSection.classList.remove("hidden"); // Exibe a seção de resultados da partida.
   } // Encerra a decisão entre continuar e concluir o quiz.
@@ -243,91 +243,103 @@ btnNextQuestion.addEventListener("click", () => {
   // Configura o evento de clique.
   goToNextQuestion(); // Executa a função que avança para a próxima pergunta.
 }); // Encerra o registro do evento do botão.
-const finalScoreEl = document.getElementById("final-score");
-const correctCountEl = document.getElementById("correct-count");
-const wrongCountEl = document.getElementById("wrong-count");
-const unansweredCountEl = document.getElementById("unanswered-count");
-const accuracyPercentEl = document.getElementById("accuracy-percent");
-const totalTimeEl = document.getElementById("total-time");
-const categoryStatsList = document.getElementById("category-stats-list");
-const reviewContainer = document.getElementById("review-container");
-const reviewList = document.getElementById("review-list");
-const btnPlayAgain = document.getElementById("btn-play-again");
-const btnReviewAnswers = document.getElementById("btn-review-answers");
-const btnBackToCategories = document.getElementById("btn-back-to-categories");
+// Busca os elementos usados para mostrar e navegar pelos resultados.
+const finalScoreEl = document.getElementById("final-score"); // Referência ao texto da pontuação final.
+const correctCountEl = document.getElementById("correct-count"); // Referência ao total de respostas corretas.
+const wrongCountEl = document.getElementById("wrong-count"); // Referência ao total de respostas incorretas.
+const unansweredCountEl = document.getElementById("unanswered-count"); // Referência ao total de perguntas não respondidas.
+const accuracyPercentEl = document.getElementById("accuracy-percent"); // Referência ao percentual de acerto.
+const totalTimeEl = document.getElementById("total-time"); // Referência ao tempo total da partida.
+const categoryStatsList = document.getElementById("category-stats-list"); // Referência à área do desempenho por categoria.
+const reviewContainer = document.getElementById("review-container"); // Referência ao contêiner da revisão das respostas.
+const reviewList = document.getElementById("review-list"); // Referência à lista que exibirá todas as respostas.
+const btnPlayAgain = document.getElementById("btn-play-again"); // Referência ao botão que inicia uma nova partida.
+const btnReviewAnswers = document.getElementById("btn-review-answers"); // Referência ao botão que mostra ou oculta a revisão.
+const btnBackToCategories = document.getElementById("btn-back-to-categories"); // Referência ao botão que retorna às categorias.
+
+// Declara a função que calcula e apresenta todas as informações do resultado final.
 function renderResults() {
-  const totalQuestions = quizQuestions.length;
-  const accuracy = Math.round((score / totalQuestions) * 100);
+  const totalQuestions = quizQuestions.length; // Obtém a quantidade total de perguntas da partida.
+  const accuracy = Math.round((score / totalQuestions) * 100); // Calcula o percentual de respostas corretas.
 
   // 1. Preenche os 6 cartões de estatísticas com os valores reais
-  finalScoreEl.textContent = score;
-  correctCountEl.textContent = score;
-  wrongCountEl.textContent = wrongCount;
-  unansweredCountEl.textContent = unansweredCount;
-  accuracyPercentEl.textContent = `${accuracy}%`;
-  totalTimeEl.textContent = `${totalQuizTime}s`;
+  finalScoreEl.textContent = score; // Exibe a pontuação final obtida pelo jogador.
+  correctCountEl.textContent = score; // Exibe a quantidade de respostas corretas.
+  wrongCountEl.textContent = wrongCount; // Exibe a quantidade de respostas incorretas.
+  unansweredCountEl.textContent = unansweredCount; // Exibe a quantidade de perguntas sem resposta.
+  accuracyPercentEl.textContent = `${accuracy}%`; // Exibe o percentual de acertos formatado.
+  totalTimeEl.textContent = `${totalQuizTime}s`; // Exibe a duração total da partida em segundos.
 
   // 2. Garante que a caixa de revisão comece escondida
-  reviewContainer.classList.add("hidden");
+  reviewContainer.classList.add("hidden"); // Mantém o painel de revisão fechado ao abrir os resultados.
 
   // 3. Agrupa os acertos e totais por categoria usando um Objeto
-  const categoryStats = {};
+  const categoryStats = {}; // Cria um objeto para acumular os dados separados por categoria.
   userAnswers.forEach((answer) => {
+    // Percorre cada resposta registrada durante o quiz.
     if (!categoryStats[answer.category]) {
-      categoryStats[answer.category] = { correct: 0, total: 0 };
-    }
-    categoryStats[answer.category].total++;
+      // Verifica se esta categoria ainda não possui um registro de estatísticas.
+      categoryStats[answer.category] = { correct: 0, total: 0 }; // Inicia os contadores dessa categoria.
+    } // Encerra a inicialização da categoria.
+    categoryStats[answer.category].total++; // Incrementa o total de perguntas respondidas nessa categoria.
     if (answer.isCorrect) {
-      categoryStats[answer.category].correct++;
-    }
-  });
+      // Verifica se a resposta atual foi correta.
+      categoryStats[answer.category].correct++; // Incrementa o total de acertos da categoria.
+    } // Encerra a atualização dos acertos.
+  }); // Encerra o agrupamento de todas as respostas.
 
   // 4. Desenha na tela cada linha de categoria calculada acima
-  categoryStatsList.innerHTML = "";
+  categoryStatsList.innerHTML = ""; // Remove dados antigos antes de montar o desempenho atualizado.
   Object.keys(categoryStats).forEach((categoryName) => {
-    const stat = categoryStats[categoryName];
-    const percent = Math.round((stat.correct / stat.total) * 100);
+    // Percorre cada categoria que possui respostas registradas.
+    const stat = categoryStats[categoryName]; // Obtém os contadores da categoria atual.
+    const percent = Math.round((stat.correct / stat.total) * 100); // Calcula o percentual de acertos da categoria.
 
-    const item = document.createElement("div");
-    item.classList.add("category-stat-item");
+    const item = document.createElement("div"); // Cria um novo elemento visual para essa categoria.
+    item.classList.add("category-stat-item"); // Aplica a classe usada na estilização da estatística.
     item.innerHTML = `
       <span>${categoryName}</span>
       <strong>${stat.correct}/${stat.total} (${percent}%)</strong>
-    `;
-    categoryStatsList.appendChild(item);
-  });
+    `; // Monta o nome da categoria e seus acertos em relação ao total.
+    categoryStatsList.appendChild(item); // Insere o item calculado na área de desempenho por categoria.
+  }); // Encerra a criação das linhas de desempenho.
 
   // 5. Monta os cartões de revisão das respostas (usando userAnswers)
-  reviewList.innerHTML = "";
+  reviewList.innerHTML = ""; // Remove uma revisão anterior antes de montar a atual.
   userAnswers.forEach((answer, index) => {
-    const item = document.createElement("div");
-    item.classList.add("review-item", answer.isCorrect ? "correct" : "wrong");
+    // Percorre todas as respostas em ordem para criar os cartões de revisão.
+    const item = document.createElement("div"); // Cria um contêiner para uma resposta específica.
+    item.classList.add("review-item", answer.isCorrect ? "correct" : "wrong"); // Aplica a classe verde ou vermelha conforme o resultado.
 
     const userChoiceText = answer.selected
       ? answer.selected
-      : "Não respondida (tempo esgotado)";
+      : "Não respondida (tempo esgotado)"; // Define o texto exibido para a escolha do jogador.
 
     item.innerHTML = `
       <p><strong>${index + 1}. [${answer.category}] ${answer.question}</strong></p>
       <p>Sua resposta: ${userChoiceText}</p>
       <p>Resposta correta: <strong>${answer.correctAnswer}</strong></p>
       <p class="review-explanation">Explicação: ${answer.explanation}</p>
-    `;
-    reviewList.appendChild(item);
-  });
-}
+    `; // Monta o enunciado, a resposta do jogador, a resposta correta e a explicação.
+    reviewList.appendChild(item); // Adiciona o cartão montado à lista de revisão.
+  }); // Encerra a criação de todos os cartões de revisão.
+} // Encerra a função que renderiza os resultados da partida.
+
+// Registra a ação que alterna a visualização da revisão das respostas.
 btnReviewAnswers.addEventListener("click", () => {
-  reviewContainer.classList.toggle("hidden");
-});
+  reviewContainer.classList.toggle("hidden"); // Remove ou adiciona a classe hidden para mostrar ou ocultar a revisão.
+}); // Encerra o evento de clique do botão de revisão.
 
+// Registra a ação que inicia uma nova partida com as configurações atuais.
 btnPlayAgain.addEventListener("click", () => {
-  resultsSection.classList.add("hidden");
-  quizSection.classList.remove("hidden");
-  startQuizEngine(selectedCategories, selectedQuestionCount);
-  renderQuestion();
-});
+  resultsSection.classList.add("hidden"); // Oculta a tela de resultados.
+  quizSection.classList.remove("hidden"); // Mostra novamente a tela das perguntas.
+  startQuizEngine(selectedCategories, selectedQuestionCount); // Reinicia o motor com as categorias e quantidade previamente escolhidas.
+  renderQuestion(); // Exibe a primeira pergunta da nova partida.
+}); // Encerra o evento de clique do botão para jogar novamente.
 
+// Registra a ação que retorna diretamente à tela de escolha de categorias.
 btnBackToCategories.addEventListener("click", () => {
-  resultsSection.classList.add("hidden");
-  categoriesSection.classList.remove("hidden");
-});
+  resultsSection.classList.add("hidden"); // Oculta a tela de resultados.
+  categoriesSection.classList.remove("hidden"); // Exibe novamente a tela de categorias.
+}); // Encerra o evento de clique do botão para mudar categorias.
