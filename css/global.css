@@ -1,0 +1,86 @@
+* {
+  /* Abre as declarações que serão aplicadas globalmente a todos os elementos. */
+  margin: 0; /* Remove margens padrão do navegador para controlar o espaçamento desde o início. */
+  padding: 0; /* Remove preenchimentos padrão do navegador para evitar espaços inesperados. */
+  box-sizing: border-box; /* Inclui borda e preenchimento no cálculo da largura e da altura dos elementos. */
+}
+
+/* Seleciona o corpo da página, que contém o conteúdo principal do quiz. */
+body {
+  /* Abre as declarações visuais e de posicionamento da página inteira. */
+  font-family:
+    Arial, Helvetica, sans-serif; /* Define a fonte do texto e alternativas caso alguma não esteja disponível. */
+  background: linear-gradient(
+    135deg,
+    #2a0845,
+    #6441a5
+  ); /* Cria um fundo em degradê roxo inclinado para compor o visual do quiz. */
+  color: #ffffff; /* Define o texto padrão da página como branco para contrastar com o fundo escuro. */
+  min-height: 100vh; /* Garante que o corpo tenha pelo menos a altura total da janela do navegador. */
+  display: flex; /* Ativa o Flexbox para posicionar e alinhar o conteúdo principal. */
+  justify-content: center; /* Centraliza horizontalmente o conteúdo dentro do corpo da página. */
+  align-items: center; /* Centraliza verticalmente o conteúdo dentro do corpo da página. */
+  padding: 20px; /* Cria espaço interno para que o conteúdo não encoste nas bordas da janela. */
+}
+
+/* Seleciona a área principal que envolve as telas do Quiz Master. */
+main {
+  /* Abre as declarações de tamanho e alinhamento do conteúdo principal. */
+  width: 100%; /* Permite que a área principal use toda a largura disponível em telas pequenas. */
+  max-width: 900px; /* Limita a largura em telas grandes para manter o conteúdo legível. */
+  text-align: center; /* Centraliza os textos e conteúdos em linha dentro da área principal. */
+}
+.categories-actions {
+  /* Abre as declarações de posicionamento e espaçamento dos botões. */
+  display: flex; /* Ativa o Flexbox para alinhar os botões em uma linha quando houver espaço. */
+  justify-content: center; /* Centraliza os botões horizontalmente dentro da área de ações. */
+  gap: 15px; /* Define o espaço entre os botões. */
+  flex-wrap: wrap; /* Permite que os botões passem para outra linha em telas estreitas. */
+}
+
+/* Seleciona os botões que pertencem à área de ações das categorias. */
+.categories-actions button {
+  /* Abre as declarações visuais e interativas compartilhadas pelos botões. */
+  padding: 12px 24px; /* Define o espaço interno vertical e horizontal de cada botão. */
+  font-size: 1rem; /* Define o tamanho do texto do botão conforme a fonte raiz. */
+  font-weight: bold; /* Deixa o texto do botão em negrito para facilitar a leitura. */
+  border: none; /* Remove a borda padrão fornecida pelo navegador. */
+  border-radius: 8px; /* Arredonda os cantos do botão. */
+  cursor: pointer; /* Mostra o cursor de clique ao passar sobre o botão. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Aplica um fundo branco translúcido aos botões por padrão. */
+  color: #ffffff; /* Define o texto dos botões como branco. */
+  transition: background-color 0.2s; /* Anima a mudança de cor de fundo ao interagir com o botão. */
+}
+
+/* Seleciona os botões de ação enquanto o ponteiro do mouse está sobre eles. */
+.categories-actions button:hover {
+  /* Abre as declarações temporárias para a interação com os botões. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.35
+  ); /* Clareia o fundo do botão ao passar o mouse sobre ele. */
+}
+#btn-start-config,
+#btn-start-quiz,
+#btn-play-again {
+  /* Abre a declaração da cor de destaque do botão para começar o quiz. */
+  background-color: #00c853; /* Define um fundo verde para destacar a ação principal. */
+}
+
+/* Seleciona o botão de início do quiz enquanto o ponteiro do mouse está sobre ele. */
+#btn-start-config:hover,
+#btn-start-quiz:hover,
+#btn-play-again:hover {
+  /* Abre a declaração visual temporária do botão principal durante a interação. */
+  background-color: #00e676; /* Clareia o verde do botão principal ao passar o mouse sobre ele. */
+}
+.hidden {
+    display: none;
+  }
