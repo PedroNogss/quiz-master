@@ -1,0 +1,92 @@
+#categories-section h1 {
+  /* Abre as declarações visuais específicas do título principal das categorias. */
+  font-size: 2.5rem; /* Aumenta o título usando como referência o tamanho de fonte raiz do navegador. */
+  margin-bottom: 10px; /* Adiciona espaço abaixo do título antes do próximo conteúdo. */
+}
+#categories-section h2 {
+  font-size: 1.5rem; /* Define o tamanho do subtítulo em relação à fonte raiz. */
+  margin-bottom: 8px; /* Adiciona espaço abaixo do subtítulo antes do próximo conteúdo. */
+}
+/* Seleciona somente o parágrafo que é filho direto da tela de categorias. */
+#categories-section > p {
+  /* Abre as declarações para o texto introdutório da seleção de categorias. */
+  margin-bottom: 30px; /* Separa o texto introdutório da grade de cartões abaixo dele. */
+  color: #d1c4e9; /* Usa um tom lilás claro para diferenciar o texto do branco principal. */
+}
+
+/* Seleciona a grade que organiza os cartões das categorias do quiz. */
+.categories-grid {
+  /* Abre as declarações do layout da grade de categorias. */
+  display: grid; /* Ativa o CSS Grid para organizar os cartões em linhas e colunas. */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(240px, 1fr)
+  ); /* Cria colunas responsivas de pelo menos 240px que se ajustam ao espaço disponível. */
+  gap: 20px; /* Define 20px de distância entre as linhas e colunas de cartões. */
+  margin-bottom: 30px; /* Cria espaço entre a grade e os botões de ação. */
+}
+
+/* Seleciona cada cartão que representa uma categoria. */
+.category-card {
+  /* Abre as declarações visuais e interativas dos cartões de categoria. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Aplica um fundo branco translúcido para destacar o cartão sobre o degradê. */
+  border: 2px solid transparent; /* Reserva uma borda transparente que poderá ganhar cor quando a categoria for selecionada. */
+  border-radius: 16px; /* Arredonda os cantos do cartão. */
+  padding: 25px 20px; /* Cria espaço interno vertical e horizontal para o conteúdo do cartão. */
+  cursor: pointer; /* Mostra o cursor de clique para indicar que o cartão pode ser selecionado. */
+  transition: all 0.2s ease; /* Anima suavemente as mudanças de estilo do cartão em 0,2 segundo. */
+}
+
+/* Seleciona o cartão sob o ponteiro do mouse para indicar que pode ser acionado. */
+.category-card:hover {
+  /* Abre as declarações aplicadas temporariamente durante o estado de passagem do mouse. */
+  transform: translateY(
+    -5px
+  ); /* Move o cartão 5px para cima ao passar o mouse sobre ele. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.18
+  ); /* Clareia o fundo translúcido do cartão durante a interação. */
+}
+
+/* Seleciona o cartão que também possui a classe selected, usada para indicar seleção. */
+.category-card.selected {
+  /* Abre as declarações visuais do estado selecionado da categoria. */
+  border-color: #00e676; /* Colore a borda de verde para sinalizar que a categoria foi selecionada. */
+  background-color: rgba(
+    0,
+    230,
+    118,
+    0.2
+  ); /* Aplica um fundo verde translúcido ao cartão selecionado. */
+  box-shadow: 0 0 15px rgba(0, 230, 118, 0.4); /* Cria um brilho verde ao redor do cartão selecionado. */
+}
+
+/* Seleciona o elemento que contém o ícone de cada categoria. */
+.category-icon {
+  /* Abre as declarações do tamanho, exibição e espaçamento dos ícones. */
+  font-size: 2.5rem; /* Aumenta o emoji ou ícone usando o tamanho de fonte raiz como referência. */
+  display: block; /* Faz o ícone ocupar sua própria linha dentro do cartão. */
+  margin-bottom: 12px; /* Separa o ícone do título da categoria. */
+}
+
+/* Seleciona os títulos h3 dentro de cada cartão de categoria. */
+.category-card h3 {
+  /* Abre as declarações tipográficas dos nomes das categorias. */
+  margin-bottom: 8px; /* Adiciona espaço entre o nome e a descrição da categoria. */
+  font-size: 1.3rem; /* Define o tamanho do nome da categoria em relação à fonte raiz. */
+}
+
+/* Seleciona as descrições em parágrafo dentro dos cartões de categoria. */
+.category-card p {
+  /* Abre as declarações tipográficas dos textos descritivos dos cartões. */
+  font-size: 0.9rem; /* Define um tamanho ligeiramente menor para a descrição. */
+  color: #e0e0e0; /* Usa um cinza claro para diferenciar a descrição do restante do texto. */
+}
