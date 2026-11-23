@@ -10,7 +10,8 @@
     <!-- Ajusta a página à largura da tela para melhorar a exibição em celulares e outros dispositivos. -->
     <title>Quiz Master</title>
     <!-- Define o título exibido na aba do navegador. -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/categories.css" />
     <!-- Conecta esta página à folha de estilos que controla sua aparência. -->
   </head>
   <!-- Encerra a área de metadados e recursos da página. -->
@@ -105,98 +106,6 @@
       <section id="settings-section" class="hidden">
         <!-- Reserva a seção de configurações, identificada pelo id para uso no CSS e no JavaScript. -->
         <!-- A classe hidden mantém esta seção oculta até que o usuário avance pela interface. -->
-        <h2>Configurar Partida</h2>
-        <!-- Exibe o título da tela de personalização da partida. -->
-        <p>Personalize as regras do seu desafio</p>
-        <!-- Orienta o usuário sobre as opções de configuração disponíveis. -->
-        <div class="settings-summary">
-          <!-- Agrupa o resumo das escolhas feitas pelo usuário. -->
-          <h3>Categorias escolhidas:</h3>
-          <!-- Identifica o resumo que apresenta as categorias selecionadas. -->
-          <p id="selected-categories-text"></p>
-          <!-- Exibe dinamicamente os nomes das categorias escolhidas por meio do JavaScript. -->
-        </div>
-        <!-- Encerra o bloco que resume as categorias selecionadas. -->
-        <div class="settings-group">
-          <!-- Agrupa as opções relacionadas à quantidade de perguntas. -->
-          <h3>Quantidade de perguntas</h3>
-          <!-- Exibe o título do grupo de configuração da quantidade de perguntas. -->
-          <div class="options-row">
-            <!-- Organiza horizontalmente os botões de quantidade em uma linha responsiva. -->
-            <button
-              type="button"
-              class="question-count-btn selected"
-              data-questions="5"
-            >
-              <!-- Define o botão como não submissivo e vincula o valor de cinco perguntas ao JavaScript. -->
-              5 Perguntas
-              <!-- Exibe o texto da opção que seleciona cinco perguntas. -->
-            </button>
-            <!-- Encerra o botão da opção de cinco perguntas. -->
-            <button
-              type="button"
-              class="question-count-btn"
-              data-questions="10"
-            >
-              <!-- Define o botão como não submissivo e vincula o valor de dez perguntas ao JavaScript. -->
-              10 Perguntas
-              <!-- Exibe o texto da opção que seleciona dez perguntas. -->
-            </button>
-            <!-- Encerra o botão da opção de dez perguntas. -->
-            <button
-              type="button"
-              class="question-count-btn"
-              data-questions="15"
-            >
-              <!-- Define o botão como não submissivo e vincula o valor de quinze perguntas ao JavaScript. -->
-              15 Perguntas
-              <!-- Exibe o texto da opção que seleciona quinze perguntas. -->
-            </button>
-            <!-- Encerra o botão da opção de quinze perguntas. -->
-          </div>
-          <!-- Encerra a linha que reúne os botões de quantidade de perguntas. -->
-        </div>
-        <!-- Encerra o grupo de configuração da quantidade de perguntas. -->
-        <div class="settings-group">
-          <!-- Agrupa as opções relacionadas ao tempo disponível por pergunta. -->
-          <h3>Tempo por pergunta</h3>
-          <!-- Exibe o título do grupo de configuração do tempo por pergunta. -->
-          <div class="options-row">
-            <!-- Organiza horizontalmente os botões de tempo em uma linha responsiva. -->
-            <button
-              type="button"
-              class="time-limit-btn selected"
-              data-time="15"
-            >
-              <!-- Define o botão como não submissivo e vincula o limite padrão de quinze segundos ao JavaScript. -->
-              15 segundos
-              <!-- Exibe o texto da opção que define quinze segundos por pergunta. -->
-            </button>
-            <!-- Encerra o botão da opção de quinze segundos. -->
-            <button type="button" class="time-limit-btn" data-time="30">
-              <!-- Define o botão como não submissivo e vincula o limite de trinta segundos ao JavaScript. -->
-              30 segundos
-              <!-- Exibe o texto da opção que define trinta segundos por pergunta. -->
-            </button>
-            <!-- Encerra o botão da opção de trinta segundos. -->
-            <button type="button" class="time-limit-btn" data-time="60">
-              <!-- Define o botão como não submissivo e vincula o limite de sessenta segundos ao JavaScript. -->
-              60 segundos
-              <!-- Exibe o texto da opção que define sessenta segundos por pergunta. -->
-            </button>
-            <!-- Encerra o botão da opção de sessenta segundos. -->
-          </div>
-          <!-- Encerra a linha que reúne os botões de tempo por pergunta. -->
-        </div>
-        <!-- Encerra o grupo de configuração do tempo por pergunta. -->
-        <div class="categories-actions">
-          <!-- Agrupa os botões usados para retornar ou iniciar a partida. -->
-          <button type="button" id="btn-back-categories">Voltar</button>
-          <!-- Cria o botão que permite voltar à seleção de categorias sem enviar um formulário. -->
-          <button type="button" id="btn-start-quiz">Iniciar Partida</button>
-          <!-- Cria o botão identificado pelo JavaScript para iniciar o quiz com as configurações escolhidas. -->
-        </div>
-        <!-- Encerra o grupo dos botões de navegação da tela de configurações. -->
       </section>
       <!-- Encerra a tela de personalização da partida. -->
       <section id="quiz-section" class="hidden">
