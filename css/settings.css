@@ -1,0 +1,64 @@
+#settings-section h2 {
+  font-size: 2rem; /* Define o tamanho do subtítulo em relação à fonte raiz. */
+  margin-bottom: 10px; /* Adiciona espaço abaixo do subtítulo antes do próximo conteúdo. */
+}
+#settings-section > p {
+  margin-bottom: 25px; /* Cria espaço entre o texto introdutório e os elementos de configuração. */
+  color: #d1c4e9; /* Usa um tom lilás claro para diferenciar o texto do branco principal. */
+}
+.settings-summary {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Aplica um fundo branco translúcido para destacar o resumo das configurações. */
+  padding: 15px 20px; /* Cria espaço interno para que o conteúdo do resumo não encoste nas bordas. */
+  border-radius: 12px; /* Arredonda os cantos do resumo das configurações para suavizar o visual. */
+  margin-bottom: 30px; /* Cria espaço entre o resumo das configurações e os botões de ação. */
+}
+#selected-categories-text {
+  font-weight: bold; /* Deixa o texto que lista as categorias selecionadas em negrito para destacá-lo. */
+  color: #00e676; /* Aplica uma cor verde ao texto que lista as categorias selecionadas. */
+  margin-top: 8px; /* Adiciona espaço acima do texto que lista as categorias selecionadas. */
+}
+.settings-group {
+  margin-bottom: 30px; /* Cria espaço entre os grupos de configurações para separar visualmente cada seção. */
+}
+.settings-group h3 {
+  margin-bottom: 15px; /* Adiciona espaço abaixo do título antes dos elementos de configuração. */
+}
+.options-row {
+  display: flex; /* Ativa o Flexbox para alinhar os elementos de configuração em linha. */
+  gap: 15px; /* Define o espaço entre os elementos de configuração na mesma linha. */
+  flex-wrap: wrap; /* Permite que os elementos passem para outra linha em telas estreitas. */
+  justify-content: center; /* Centraliza os elementos de configuração horizontalmente dentro do grupo. */
+}
+.question-count-btn,
+.time-limit-btn {
+  padding: 12px 24px; /* Define o espaço interno vertical e horizontal dos botões de configuração. */
+  font-size: 1rem; /* Define o tamanho do texto dos botões de configuração conforme a fonte raiz. */
+  font-weight: bold; /* Deixa o texto dos botões de configuração em negrito para facilitar a leitura. */
+  color: #ffffff; /* Define o texto dos botões de configuração como branco para contraste com o fundo. */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Aplica um fundo branco translúcido para os botões de configuração. */
+  border: 2px solid transparent; /* Define uma borda transparente para os botões de configuração. */
+  border-radius: 10px; /* Arredonda os cantos dos botões de configuração. */
+  cursor: pointer; /* Muda o cursor para indicar que o elemento é clicável. */
+  transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades durante a animação. */
+}
+.question-count-btn.selected,
+.time-limit-btn.selected {
+  border-color: #00e676; /* Colore a borda de verde para indicar que o botão de configuração foi selecionado. */
+  background-color: rgba(
+    0,
+    230,
+    118,
+    0.2
+  ); /* Aplica um fundo verde translúcido ao botão de configuração selecionado. */
+  box-shadow: 0 0 12px rgba(0, 230, 118, 0.4); /* Cria um brilho verde ao redor do botão de configuração selecionado. */
+}
