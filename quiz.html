@@ -3,12 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz Master - Nome da Tela</title>
+    <title>Quiz Master - Partida</title>
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/quiz.css" />
   </head>
   <body>
     <main>
+      <section id="quiz-section">
+        <!-- Reserva a seção visível durante o quiz e a mantém oculta até o início da partida. -->
+        <!-- 1. Cabeçalho com contador, pontos e cronômetro -->
+        <div class="quiz-header">
+          <!-- Organiza as informações gerais exibidas durante cada pergunta. -->
+          <span id="question-counter">Pergunta 1 de 5</span>
+          <!-- Exibe o número atual da pergunta e o total configurado. -->
+          <span id="score-display">Pontos: 0</span>
+          <!-- Exibe a pontuação atual do usuário. -->
+          <span id="timer-display">⏱️ 15s</span>
+          <!-- Exibe o tempo restante da pergunta e é atualizado pelo JavaScript. -->
+        </div>
+        <!-- Encerra o cabeçalho do quiz. -->
+
+        <!-- 2. Trilho e preenchimento da barra de progresso -->
+        <div class="progress-container">
+          <!-- Exibe o fundo que delimita a barra de progresso. -->
+          <div id="progress-bar"></div>
+          <!-- Representa a parte preenchida da barra de progresso. -->
+        </div>
+        <!-- Encerra o recipiente da barra de progresso. -->
+
+        <!-- 3. Caixa exclusiva do enunciado da pergunta -->
+        <div class="question-box">
+          <!-- Agrupa visualmente a categoria e o texto da pergunta atual. -->
+          <span id="question-category">Categoria</span>
+          <!-- Exibe a categoria da pergunta atual. -->
+          <h2 id="question-text">Texto da pergunta aparecerá aqui</h2>
+          <!-- Exibe o enunciado da pergunta atual por meio do JavaScript. -->
+        </div>
+        <!-- Encerra o cartão que contém o enunciado da pergunta. -->
+
+        <!-- 4. Grade onde o JavaScript vai criar os 4 botões de alternativa -->
+        <div id="options-container" class="options-grid"></div>
+        <!-- Reserva a grade preenchida dinamicamente pelas alternativas da pergunta atual. -->
+
+        <!-- 5. Botão para ir para a próxima pergunta -->
+        <button type="button" id="btn-next-question" class="hidden">
+          <!-- Define um botão não submissivo, inicialmente oculto, para avançar no quiz. -->
+          Próxima Pergunta
+          <!-- Exibe o texto do botão de avanço. -->
+        </button>
+        <!-- Encerra o botão que avança para a próxima pergunta. -->
+      </section>
       <!-- A <section> desta tela entra aqui dentro -->
     </main>
   </body>
