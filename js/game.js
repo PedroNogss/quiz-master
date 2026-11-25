@@ -129,7 +129,35 @@ function handleTimeOut() {
     goToNextQuestion(); // Avança automaticamente para a próxima pergunta.
   }, 1200); // Define o atraso de 1200 milissegundos, ou 1,2 segundo.
 } // Encerra a função executada após o término do tempo.
+function goToNextQuestion() {
+  currentQuestionIndex++;
 
+  if (currentQuestionIndex < quizQuestions.length) {
+    renderQuestion();
+  } else {
+    totalQuizTime = Math.round((Date.now() - quizStartTime) / 1000);
+
+    // 1. Junta todos os dados finais da partida em um único pacote (objeto)
+    const quizResults = {
+      totalQuestions: quizQuestions.length,
+      score: score,
+      wrongCount: wrongCount,
+      unansweredCount: unansweredCount,
+      totalQuizTime: totalQuizTime,
+      userAnswers: userAnswers,
+    };
+
+    // 2. Salva o pacote inteiro na gaveta do navegador
+    localStorage.setItem("quizResults", JSON.stringify(quizResults));
+
+    // 3. Vai para a página de resultados
+    window.location.href = "results.html";
+  }
+}
+
+btnNextQuestion.addEventListener("click", () => {
+  goToNextQuestion();
+});
 // Declara a função responsável por avançar a partida.
 startQuizEngine(selectedCategories, selectedQuestionCount);
 renderQuestion();
